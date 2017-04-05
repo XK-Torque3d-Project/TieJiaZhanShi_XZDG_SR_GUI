@@ -87,6 +87,11 @@ datablock SFXProfile(soundChuShiHua)
 
 function InitGui::onWake( %this )
 {
+	$XuanZhuanDengJi = GetIniValueNum("Record", "XuanZhuanDengJi", "./Detail.hnb");
+    if ($XuanZhuanDengJi < 0 || $XuanZhuanDengJi > 10) {
+        $XuanZhuanDengJi = 5;
+        WriteIniValueString("Record", "XuanZhuanDengJi", $XuanZhuanDengJi, "./Detail.hnb");
+    }
 	PCVRSetTwoplayer(true);
 	readInforFromGameset();
 	flashLight(false);
