@@ -170,7 +170,7 @@
          canSaveDynamicFields = "0";
       };
       new GuiTextCtrl(TextCoin) {
-         text = "3";
+         text = "1";
          maxLength = "1024";
          Margin = "0 0 0 0";
          Padding = "0 0 0 0";
@@ -286,7 +286,7 @@
          canSaveDynamicFields = "0";
       };
       new GuiTextCtrl(TodayText) {
-         text = "2013-10-31";
+         text = "2017/4/5";
          maxLength = "1024";
          Margin = "0 0 0 0";
          Padding = "0 0 0 0";
@@ -593,7 +593,7 @@
          canSaveDynamicFields = "0";
       };
       new GuiTextCtrl(shakeLevelP1) {
-         text = "3";
+         text = "2";
          maxLength = "1024";
          Margin = "0 0 0 0";
          Padding = "0 0 0 0";
@@ -633,7 +633,7 @@
          canSaveDynamicFields = "0";
       };
       new GuiTextCtrl(shakeLevelP2) {
-         text = "3";
+         text = "5";
          maxLength = "1024";
          Margin = "0 0 0 0";
          Padding = "0 0 0 0";
@@ -753,7 +753,7 @@
          canSaveDynamicFields = "0";
       };
       new GuiTextCtrl(doudongLevel) {
-         text = "3";
+         text = "4";
          maxLength = "1024";
          Margin = "0 0 0 0";
          Padding = "0 0 0 0";
@@ -859,6 +859,7 @@
          damageFrameColor = "1 0.6 0 1";
          damageRect = "50 4";
          damageOffset = "0 32";
+         pcvrIndex = "0";
          bitmap = "art/gui/gameSetAimPoint.png";
          wrap = "0";
          isContainer = "0";
@@ -879,6 +880,7 @@
          damageFrameColor = "1 0.6 0 1";
          damageRect = "50 4";
          damageOffset = "0 32";
+         pcvrIndex = "1";
          bitmap = "art/gui/gameSetAimPointP2.png";
          wrap = "0";
          isContainer = "0";
@@ -893,7 +895,24 @@
          tooltipprofile = "GuiToolTipProfile";
          hovertime = "1000";
          canSaveDynamicFields = "0";
-		pcvrIndex = 1;
+      };
+      new GuiButtonCtrl(Btn81) {
+         text = "机台转速(The machine rotation speed)";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         useMouseEvents = "0";
+         isContainer = "0";
+         Profile = "GuiMenuBarProfile";
+         HorizSizing = "right";
+         VertSizing = "bottom";
+         position = "620 448";
+         Extent = "300 55";
+         MinExtent = "8 2";
+         canSave = "1";
+         Visible = "1";
+         tooltipprofile = "GuiToolTipProfile";
+         hovertime = "1000";
+         canSaveDynamicFields = "0";
       };
    };
    new GuiBitmapCtrl(adjustBitmap) {
@@ -908,6 +927,28 @@
       MinExtent = "8 2";
       canSave = "1";
       Visible = "0";
+      tooltipprofile = "GuiToolTipProfile";
+      hovertime = "1000";
+      canSaveDynamicFields = "0";
+   };
+   new GuiTextCtrl(JiTaiZhuanSu) {
+      text = "5";
+      maxLength = "1024";
+      Margin = "0 0 0 0";
+      Padding = "0 0 0 0";
+      AnchorTop = "1";
+      AnchorBottom = "0";
+      AnchorLeft = "1";
+      AnchorRight = "0";
+      isContainer = "0";
+      Profile = "GuiBigTextProfile";
+      HorizSizing = "right";
+      VertSizing = "bottom";
+      position = "908 459";
+      Extent = "32 33";
+      MinExtent = "8 2";
+      canSave = "1";
+      Visible = "1";
       tooltipprofile = "GuiToolTipProfile";
       hovertime = "1000";
       canSaveDynamicFields = "0";
