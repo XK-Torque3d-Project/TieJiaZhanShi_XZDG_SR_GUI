@@ -1,0 +1,286 @@
+// ============================================================
+// Project            :  game
+// File               :  .\art\gui\chooseLevelGui.gui
+// Copyright          :  
+// Author             :  Administrator
+// Created on         :  2010年12月23日 星期四 16:10
+//
+// Editor             :  Codeweaver v. 1.2.3430.42233
+//
+// Description        :  
+//                    :  
+//                    :  
+// ============================================================
+$ActiveChooseGui = false;
+$HasChoosed = false;
+//--- OBJECT WRITE BEGIN ---
+%guiContent = new GameTSCtrl(ChooseLevelGui) {
+   cameraZRot = "0";
+   forceFOV = "0";
+   reflectPriority = "1";
+   Margin = "0 0 0 0";
+   Padding = "0 0 0 0";
+   AnchorTop = "1";
+   AnchorBottom = "0";
+   AnchorLeft = "1";
+   AnchorRight = "0";
+   isContainer = "1";
+   Profile = "GuiContentProfile";
+   HorizSizing = "right";
+   VertSizing = "bottom";
+   position = "0 0";
+   Extent = "1360 768";
+   MinExtent = "8 8";
+   canSave = "1";
+   Visible = "1";
+   tooltipprofile = "GuiToolTipProfile";
+   hovertime = "1000";
+   canSaveDynamicFields = "1";
+      enabled = "1";
+      helpTag = "0";
+      noCursor = "1";
+
+   new GuiBitmapCtrl() {
+      bitmap = "art/gui/chooseLevelGui/LevelBack.png";
+      wrap = "0";
+      isContainer = "0";
+      Profile = "GuiDefaultProfile";
+      HorizSizing = "right";
+      VertSizing = "bottom";
+      position = "0 0";
+      Extent = "1360 768";
+      MinExtent = "8 2";
+      canSave = "1";
+      Visible = "1";
+      tooltipprofile = "GuiToolTipProfile";
+      hovertime = "1000";
+      canSaveDynamicFields = "0";
+   };
+   new GuiBitmapButtonCtrl(StartMission2) {
+      bitmap = "art/gui/chooseLevelGui/Second";
+      groupNum = "-1";
+      buttonType = "PushButton";
+      useMouseEvents = "0";
+      isContainer = "0";
+      Profile = "GuiDefaultProfile";
+      HorizSizing = "right";
+      VertSizing = "bottom";
+      position = "254 174";
+      Extent = "355 200";
+      MinExtent = "8 2";
+      canSave = "1";
+      Visible = "1";
+      Command = "ChooseLevelGuiStartLevel( 2 );";
+      tooltipprofile = "GuiToolTipProfile";
+      hovertime = "1000";
+      canSaveDynamicFields = "0";
+   };
+   new GuiBitmapButtonCtrl(StartMission3) {
+      bitmap = "art/gui/chooseLevelGui/Third";
+      groupNum = "-1";
+      buttonType = "PushButton";
+      useMouseEvents = "0";
+      isContainer = "0";
+      Profile = "GuiDefaultProfile";
+      HorizSizing = "right";
+      VertSizing = "bottom";
+      position = "738 174";
+      Extent = "355 201";
+      MinExtent = "8 2";
+      canSave = "1";
+      Visible = "1";
+      Command = "ChooseLevelGuiStartLevel( 3 );";
+      tooltipprofile = "GuiToolTipProfile";
+      hovertime = "1000";
+      canSaveDynamicFields = "0";
+   };
+   new GuiCrossHairHud(playerCrossSP1) {
+        damageFillColor = "0 1 0 1";
+        damageFrameColor = "1 0.6 0 1";
+        damageRect = "50 4";
+        damageOffset = "0 10";
+        bitmap = "art/gui/PlaneGui/AimPoint";
+        wrap = "1";
+        isContainer = "0";
+        Profile = "GuiModelessDialogProfile";
+        HorizSizing = "center";
+        VertSizing = "center";
+        position = "640 343";
+        Extent = "80 81";
+        MinExtent = "8 8";
+        canSave = "1";
+        Visible = "1";
+        tooltipprofile = "GuiToolTipProfile";
+        hovertime = "1000";
+        canSaveDynamicFields = "0";
+    };
+      new GuiCrossHairHud(playerCrossSP2) {
+         damageFillColor = "0 1 0 1";
+         damageFrameColor = "1 0.6 0 1";
+         damageRect = "50 4";
+         damageOffset = "0 10";
+         bitmap = "art/gui/PlaneGui/AimPointP2";
+         wrap = "1";
+         isContainer = "0";
+         Profile = "GuiModelessDialogProfile";
+         HorizSizing = "center";
+         VertSizing = "center";
+         position = "640 343";
+         Extent = "80 81";
+         MinExtent = "8 8";
+         canSave = "1";
+         Visible = "1";
+         tooltipprofile = "GuiToolTipProfile";
+         hovertime = "1000";
+         canSaveDynamicFields = "0";
+		pcvrIndex = 1;
+      };
+};
+//--- OBJECT WRITE END ---
+
+function ChooseLevelGui::onWake( %this )
+{
+	playerCrossSP1.setVisible(true);
+	playerCrossSP2.setVisible(true);
+	if ($player1State <= 0)
+	{
+		playerCrossSP1.setVisible(false);
+	}
+	if ($player2State <= 0)
+	{
+		playerCrossSP2.setVisible(false);
+	}
+	
+	$ActiveChooseGui = true;
+	$HasChoosed = false;
+	
+	PCVRSetSelectlevelState(true);
+	%pos = startMission2.getPosition();
+	%pos.x = 254;
+	%pos.y = 174;
+	startMission2.setPosition( %pos.x, %pos.y );
+	%extent = StartMission2.getExtent();
+	%extent.x = 355;
+	%extent.y = 200;
+	StartMission2.setExtent( %extent );
+	
+	%pos = startMission3.getPosition();
+	%pos.x = 738;
+	%pos.y = 174;
+	startMission3.setPosition( %pos.x, %pos.y );
+	%extent = StartMission3.getExtent();
+	%extent.x = 355;
+	%extent.y = 200;
+	StartMission3.setExtent( %extent );
+	
+	StartMission2.setVisible( true );
+	StartMission3.setVisible( true );
+	
+	%this.autoStartLevel(0);
+	return;
+}
+
+function ChooseLevelGui::onSleep( %this )
+{
+	$ActiveChooseGui = false;
+	PCVRSetSelectlevelState(false);
+}
+
+function ChooseLevelGui::autoStartLevel( %this, %timeIndex )
+{
+	if( !$ActiveChooseGui || $HasChoosed )
+		return;
+	if( %timeIndex > 10000 )
+	{
+		$ActiveChooseGui = false;
+		PCVRSetSelectlevelState(false);
+		StartLevel(2);
+		return;
+	}
+	%timeIndex += 1000;
+	%this.schedule( 1000, autoStartLevel, %timeIndex );
+}
+
+function ChooseLevelGuiStartLevel( %id )
+{
+	if( !ChooseLevelGui.isAwake() || $HasChoosed )
+	{
+		return;
+	}
+	
+	$HasChoosed = true;
+	
+	if( %id == 2 )
+	{
+//		StartMission2.setBitmap("art/gui/chooseLevelGui/Second_h.png");
+//		startMission3.setVisible( false );
+//		%pos = startMission2.getPosition();
+//		%pos.x = 0;
+//		%pos.y = 0;
+//		StartMission2.setPosition( %pos.x, %pos.y );
+//		%extent = StartMission2.getExtent();
+//		%extent.x = 1360;
+//		%extent.y = 768;
+//		startMission2.setExtent( %extent );
+		changeExtentAndPos( StartMission2, -25, -17, 100, 56 );
+		startMission2.setVisible( true );
+		StartMission3.setVisible( false );
+	}
+	else if( %id == 3 )
+	{
+//		StartMission3.setBitmap("art/gui/chooseLevelGui/Third_h.png");
+//		startMission2.setVisible( false );
+//		%pos = startMission3.getPosition();
+//		%pos.x = 0;
+//		%pos.y = 0;
+//		StartMission3.setPosition( %pos.x, %pos.y );
+//		%extent = StartMission3.getExtent();
+//		%extent.x = 1360;
+//		%extent.y = 768;
+//		startMission3.setExtent( %extent );
+		changeExtentAndPos( StartMission3, -74, -17, 100, 56 );
+		StartMission3.setVisible( true );
+		StartMission2.setVisible( false );
+	}
+	$ActiveChooseGui = false;
+	PCVRSetSelectlevelState(false);
+	schedule( 3000, 0, StartLevel, %id );	
+}
+
+function changeExtentAndPos( %obj, %detx, %dety, %addx, %addy )
+{
+	%extent = %obj.getExtent();
+	%extent.x += %addx;
+	%extent.y += %addy;
+	if( %extent.x > 1360 )
+	{
+		%extent.x = 1360;
+	}
+	if( %extent.y > 768 )
+	{
+		%extent.y = 768;
+	}
+	%obj.setExtent( %extent );
+	
+	%pos = %obj.getPosition();
+	%pos.x += %detx;
+	%pos.y += %dety;
+	if( %pos.x < 0 )
+	{
+		%pos.x = 0;
+	}
+	if( %pos.y < 0 )
+	{
+		%pos.y = 0;
+	}
+	%obj.setPosition( %pos.x, %pos.y );
+	if( %extent.x == 1360 && %extent.y == 768 && %pos.x == 0 && %pos.y == 0 )
+	{
+		return;
+	}
+	else
+	{
+		schedule( 40, 0, changeExtentAndPos, %obj, %detx, %dety, %addx, %addy );
+	}
+}
+
