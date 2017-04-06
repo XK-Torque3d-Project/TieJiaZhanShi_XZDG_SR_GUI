@@ -66,7 +66,7 @@
 	};
 };
 //--- OBJECT WRITE END ---
-$showOtherInofr = true;	//hardware - false
+$showOtherInofr = false;	//hardware - false
 $player1State = -1;		//-1 not in game; 0 dead; 1 in game;
 $player2State = -1;		//-1 not in game; 0 dead; 1 in game;
 $damagePercent = 1;		//NPC attack player
