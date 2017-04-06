@@ -58,7 +58,7 @@
          canSaveDynamicFields = "0";
       };
       new GuiTextCtrl(versionShow) {
-         text = "Version: 20161017DoubleCKDGTJV1.5";
+         text = "Version: 20170406DoubleCKDGTJV1.5.1";
          maxLength = "1024";
          Margin = "0 0 0 0";
          Padding = "0 0 0 0";
